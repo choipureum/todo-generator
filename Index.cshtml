@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "하고싶은일 랜덤 생성기";
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="application-name" content="랜덤 할일 생성기">
+    <meta name="theme-color" content="#000">
+    <meta name="description" content="할일이 없다면 생성해보세요.">
+    <title>랜덤 할일 생성기</title>
+    <link rel="stylesheet" href="~/assets/style.css">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="랜덤 할일 생성기">
+    <meta property="og:description" content="당신만의 랜덤 할일을 생성하세요.">
+    <meta property="og:site_name" content="랜덤 할일 생성기">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title -랜덤 할일 생성기</title>
+    <script src="~/Scripts/vue.js" type="text/javascript"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134051594-4"></script>
+
+
+</head>
+<body>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-134051594-4');
+    </script>
+
+
+
+    <div class="container">
+        <div class="hero">
+            <h1><span class="title-identifier">랜덤 할 일</span> 생성기</h1>
+            <p>랜덤으로 <span class="title-identifier">랜덤으로 할 일을</span> 생성합니다.</p>
+        </div>
+        <div class="form">
+            <!--
+                <form action="" autocomplete="off">
+
+                    <div class="wrapper"><div class="form-8bit"><div class="form-8bit-wrapper"><input class="form-component input light-dark" type="text" name="location" id="location" placeholder="거주지(선택)"></div></div></div>
+                    <div class="wrapper"><div class="form-8bit"><div class="form-8bit-wrapper"><input class="form-component input light-dark" type="text" name="name" id="name" placeholder="이름" onchange="joonsikfinder(this.value)"></div></div></div>
+                    <div style="display: inline-block;">
+                        <label for="is-limited"><div class="wrapper checkboxlabeler"><div id="is-limited-wrapper" class="form-8bit"><div class="form-8bit-wrapper"><input id="is-limited" class="checkboxlabeler-input" type="checkbox"></div></div></div><p class="checkboxlabeler" id="is-limited-alerter">글자수 제한</p></label>
+                        <div class="wrapper" id="is-limited-num"><div class="form-8bit"><div class="form-8bit-wrapper"><input class="form-component input light-dark" type="number" name="is-limited-num" id="is-limited-num-input" placeholder="N자리" onchange=""></div></div></div>
+                    </div>
+                    <div class="wrapper"><div class="form-8bit"><div class="form-8bit-wrapper"><div class="form-component button" onclick="generate(document.getElementById('name').value, document.getElementById('location').value, 'result')">생성!</div></div></div></div>
+                </form>
+             -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="wrapper">
+            <p class="result" id="result">생성 버튼을 누르면 여기에 결과가 표시됩니다.</p>
+        </div>
+        <hr>
+
+        <div id="app">
+            <div class="wrapper">
+                <div class="form-8bit">
+                    <div class="form-8bit-wrapper">
+                        <div type="button" class="form-component button" @@click="makeBoring()" />생성!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div v-if="view == true">
+            <hr />
+            <p>당장 할 것 : {{activity}}</p>
+            <p>가격 : {{price * 100000}} won</p>
+            <p>타입 : {{type}}</p>
+            <p>실현가능성 : {{accessibility * 100}} % </p>
+            <hr />
+        </div>
+    </div>
+    <div class="example">
+        <p>어떤 미션이 나올까?</p>
+        <div class="input-example light-dark" id="example-location">푸름에게</div>
+        <div class="input-example light-dark" id="example-name">술사기</div>
+        →
+        <div class="input-example light-dark" id="example-result">실현율 100% / 비용: 1000만원</div>
+    </div>
+    </div>
+    <div class="github-wrapper"><div class="form-8bit"><div class="form-8bit-wrapper"><div class="github"><a href="./detail.html" target="_blank">대체 여긴 뭐하는 사이트인가요?</a></div></div></div></div>
+
+    <script type="text/javascript">
+        var client_id = 'cNe5P6_kfag5VUKmquv0';
+        var client_secret = 'yTN5A_ULs0';
+
+        var app = new Vue({
+            el: '#app',
+            data() {
+                return {
+                    view: false,
+                    accessibility: '',
+                    activity: '',
+                    key: '',
+                    link: '',
+                    participants: '',
+                    price: '',
+                    type: ''
+                }
+            },
+            methods: {
+                makeBoring: function () {
+                    var url = "http://www.boredapi.com/api/activity/";
+                    var self = this;
+
+                    axios.get(url)
+                        .then(function (response) {
+                            if (response) {
+                                d = response.data;
+                                self.accessibility = d.accessibility;
+                                self.activity = d.activity;
+                                self.key = d.key;
+                                self.link = d.link;
+                                self.participants = d.participants;
+                                self.price = d.price;
+                                self.type = d.type;
+                                self.view = true;
+                            }
+                            else {
+                                alert("받아오기 실패");
+                            }
+                        }).catch(function (error) {
+                            alert("ERROR: " + (error.message | error));
+                        });
+
+                }
+
+            }
+        });
+    </script>
+
+</body>
+</html>
