@@ -28,5 +28,5 @@
 
 ## 화면
 
-![image](https://user-images.githubusercontent.com/55127127/112115713-d6ff3100-8bfc-11eb-9c89-0163abe29aab.png)
+![image](https://user-images.githubusercontent.com/55127127/113792165-38d4a480-9780-11eb-88f3-b33faaa8d528.png)
 
