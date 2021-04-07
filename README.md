@@ -21,7 +21,7 @@
 ## Reference
 
 - [board API](http://www.boredapi.com/api/activity/)
-- [NAVER API](https://developers.naver.com/apps/#/myapps/cNe5P6_kfag5VUKmquv0/overview)
+- [NAVER PAPAGO API](https://developers.naver.com/apps/#/myapps/cNe5P6_kfag5VUKmquv0/overview)
 
 ## Links
 - Repository: https://github.com/choipureum/todo-generator
