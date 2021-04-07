@@ -31,5 +31,5 @@
 
 ## 화면
 
-![image](https://user-images.githubusercontent.com/55127127/113792165-38d4a480-9780-11eb-88f3-b33faaa8d528.png)
+![image](https://user-images.githubusercontent.com/55127127/113838576-dbfddc00-97c9-11eb-9369-1f75b951b4e7.png)
 
