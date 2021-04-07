@@ -4,7 +4,7 @@
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/choipureum/todo-generator) 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-[![](https://img.shields.io/badge/vue-2.2.4-green.svg)
+[!](https://img.shields.io/badge/vue-2.2.4-green.svg)
 > 할일 없을 때 랜덤 할일 생성기 v1.0.0
 
 ## 핵심 기능  Key Feature
