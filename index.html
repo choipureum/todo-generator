@@ -19,6 +19,7 @@
     <meta property="og:locale" content="ko_KR">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title -랜덤 할일 생성기</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="assets/vue.min.js" type="text/javascript"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  
@@ -98,21 +99,38 @@
             },
             methods: {
                 makeBoring: function (event) {                   
-                    var url = "https://www.boredapi.com/api/activity/";                   
+                    var url = "https://www.boredapi.com/api/activity/";      
+                    var trans_url = "https://dapi.kakao.com/v2/translation/translate";
                     var self = this;
 
                     axios.get(url)
                         .then(function (response) {
                             if (response) {
                                 d = response.data;
-                                self.accessibility = d.accessibility;
-                                self.activity = d.activity;
+                                self.accessibility = d.accessibility;                               
                                 self.key = d.key;
                                 self.link = d.link;
                                 self.participants = d.participants;
                                 self.price = d.price;
                                 self.type = d.type;
                                 self.view = true;
+                                
+                                $.ajax({
+                                    type: "GET",
+                                    url: trans_url,
+                                    headers: {
+                                        "Authorization": 'KakaoAK 07d0deacafdcb665df1797759d9bbf84'
+                                    },
+                                    data: {
+                                        query: d.activity,
+                                        src_lang: 'en',
+                                        target_lang: 'kr',
+                                    },
+                                    success: function (res) {
+                                        var result = res.translated_text[0];
+                                        self.activity = res.translated_text[0];
+                                    }
+                                });
                             }
                             else {
                                 alert("받아오기 실패");
