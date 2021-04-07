@@ -107,13 +107,6 @@
                         .then(function (response) {
                             if (response) {
                                 d = response.data;
-                                self.accessibility = d.accessibility;                               
-                                self.key = d.key;
-                                self.link = d.link;
-                                self.participants = d.participants;
-                                self.price = d.price;
-                                self.type = d.type;
-                                self.view = true;
                                 
                                 $.ajax({
                                     type: "GET",
@@ -129,6 +122,13 @@
                                     success: function (res) {
                                         var result = res.translated_text[0];
                                         self.activity = res.translated_text[0];
+                                        self.accessibility = d.accessibility;                               
+                                        self.key = d.key;
+                                        self.link = d.link;
+                                        self.participants = d.participants;
+                                        self.price = d.price;
+                                        self.type = d.type;
+                                        self.view = true;
                                     }
                                 });
                             }
