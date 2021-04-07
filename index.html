@@ -98,7 +98,10 @@
             },
             methods: {
                 makeBoring: function (event) {
+                    var client_id = 'cNe5P6_kfag5VUKmquv0';
+                    var client_secret = 'yTN5A_ULs0';
                     var url = "https://www.boredapi.com/api/activity/";
+                    var papago_url = "https://openapi.naver.com/v1/papago/n2mt";
                     var self = this;
 
                     axios.get(url)
@@ -120,6 +123,35 @@
                         }).catch(function (error) {
                             alert("ERROR: " + (error.message | error));
                         });
+                    
+                    axios.post(papago_url, {
+                        headers: {
+                            'X-Naver-Client-Id': client_id,
+                            'X-Naver-Client-Secret': client_secret,
+                            'Content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                            'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36(KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36",
+                            'Origin': 'http://techimbc.com/'
+                        },
+                        
+                        withCredentials: true
+                        ,
+                        source: 'en',
+                        target: 'ko',
+                        text: self.activity
+
+                    })
+                        .then(function (response) {
+                            if (response) {
+                                d = response.data;
+                                self.activity = d.activity;
+                            }
+                            else {
+                                alert("받아오기 실패");
+                            }
+                        }).catch(function (error) {
+                            alert("ERROR: " + (error.message | error));
+                        });
+                    
                 }
             }
         });
