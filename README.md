@@ -20,7 +20,7 @@
 
 ## Reference
 
-- [twilio API](http://www.boredapi.com/api/activity/)
+- [board API](http://www.boredapi.com/api/activity/)
 - [NAVER API](https://developers.naver.com/apps/#/myapps/cNe5P6_kfag5VUKmquv0/overview)
 
 ## Links
