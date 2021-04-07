@@ -7,41 +7,26 @@
 > 할일 없을 때 랜덤 할일 생성기 v1.0.0
 
 ## 핵심 기능  Key Feature
-- 특정 사용자의 모든 repository들을 돌며 오늘 commit을 확인합니다.(여러 사용자여도 되는데 github api특성상 호출 limit/hour 있기 때문에 1명 하세요) 
-  - 오늘 commit이 존재할 때는 메세지를 보내지 않습니다.
-- 설정값에 미치지 못하는 commit 수(default:1)일 경우, 자동으로 알람 메시지를 전송합니다. (단 컴퓨터가 실행 중이어야합니다.)
+- vue를 활용한 랜덤 할일 생성기 v1.0.0입니다. 랜덤으로 할일을 생성하고 cost와 실현 가능성까지 도출합니다.
 
 ## 사용 How To Use
   
-- 설정파일 변경(key.txt)
-  - 설정파일 예제(key.txt)에서 필요한 access_token값들, 설정등을 채워주세요
-    - `{TWILIO_ACCOUNT_SID}` : twilio accout sid
-    - `{TWILIO_AUTH_TOKEN}` : twilio auth token
-    - `{TWILIO_PHONE_NUMBER}` : twilio에서 발급받은 휴대폰 번호
-    - `{GITHUB_ACCESS_TOKEN}` : 깃헙 public acess_token 발급받은 뒤 설정
-    - `{YOUR NAME}` : 이름
-    - `{YOUR PHONE NUMBER}` : SMS를 받을 휴대폰 번호
-    
-- 윈도우 프로세스 등록
+- https://choipureum.github.io/todo-generator/ 접속 후 생성!
 
 ## Contributing
 - [@choipureum](https://github.com/choipureum)
 
 ## Reference
-```
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-```
-- [twilio API](https://www.twilio.com/docs/sms)
-- [github API](https://docs.github.com/en/rest/reference)
+
+- [twilio API](http://www.boredapi.com/api/activity/)
+- [NAVER API](https://developers.naver.com/apps/#/myapps/cNe5P6_kfag5VUKmquv0/overview)
 
 ## Links
-- Repository: https://github.com/choipureum/CommitChecker
-- Issue tracker: https://github.com/choipureum/CommitChecker/issues
+- Repository: https://github.com/choipureum/todo-generator
+- Issue tracker: https://github.com/choipureum/todo-generator/issues
   - 보안 취약점 등의 민감한 이슈인 경우 poo1994.imbc.com 로 연락주십시오. 
 
-## Testing
-### 윈도우 서비스 설정
+## 화면
+
 ![image](https://user-images.githubusercontent.com/55127127/112115713-d6ff3100-8bfc-11eb-9c89-0163abe29aab.png)
-### SMS Test
-![image](https://user-images.githubusercontent.com/55127127/112115841-feee9480-8bfc-11eb-9326-6b5346a138d9.png)
+
