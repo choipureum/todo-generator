@@ -56,7 +56,7 @@
             <div class="wrapper">
                 <div class="form-8bit">
                     <div class="form-8bit-wrapper">
-                        <div type="button" class="form-component button" v-on:click="makeBoring()">생성!</div>
+                        <div type="button" class="form-component button" v-on:click="makeBoring()"><span>{{question}}</span></div>
                     </div>
                 </div>
             </div>
@@ -91,6 +91,7 @@
             el: '#app',
             data() {
                 return {
+                    question: '생성!',
                     view: false,
                     accessibility: '',
                     activity: '',
@@ -106,7 +107,8 @@
                     var url = "https://www.boredapi.com/api/activity/";      
                     var trans_url = "https://dapi.kakao.com/v2/translation/translate";
                     var self = this;
-
+                    self.question = "생성중...";
+                    
                     axios.get(url)
                         .then(function (response) {
                             if (response) {
@@ -133,6 +135,7 @@
                                         self.price = d.price;
                                         self.type = d.type;
                                         self.view = true;
+                                        self.question ="생성완료";
                                     }
                                 });
                             }
